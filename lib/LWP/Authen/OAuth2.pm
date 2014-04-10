@@ -54,6 +54,7 @@ sub init {
     $self->copy_option(\%opts, "is_strict", 1);
     $self->copy_option(\%opts, "prerefresh", undef);
     $self->copy_option(\%opts, "save_tokens", undef);
+    $self->copy_option(\%opts, "save_tokens_args", undef);
     $self->copy_option(\%opts, "token_string", undef);
     $self->copy_option(\%opts, "user_agent", undef);
 
@@ -63,7 +64,7 @@ sub init {
         if ($@) {
             croak("While decoding token_string: $@");
         }
-        
+
         my $class = $tokens->{_class}
             or croak("No _class in token_string '$self->{token_string}'");
 
@@ -144,7 +145,7 @@ sub _set_tokens {
         $self->{access_token} = $tokens;
         if ($self->{save_tokens} and not $skip_save) {
             my $as_string = $self->token_string;
-            $self->{save_tokens}->($as_string);
+            $self->{save_tokens}->($as_string, @{$self->{save_tokens_args}});
         }
         return;
     }
@@ -330,6 +331,7 @@ Here are examples of simple usage.
 
                      # Optional hook, but recommended.
                      save_tokens => \&save_tokens,
+                     save_tokens_args => [ $dbh ],
 
                      # This is for when you have tokens from last time.
                      token_string => $token_string.
@@ -369,7 +371,7 @@ Here are examples of simple usage.
     # And if you need more flexibility, you can use LWP::UserAgent's request
     # method
     $oauth2->request($http_request, $content_file);
-    
+
     # In some flows you can refresh tokens, in others you have to go through
     # the handshake yourself.  This method lets you know whether a refresh
     # looks possible.
@@ -540,6 +542,26 @@ process that needs to construct a C<$oauth2> object.
 
 By default this is not provided.  However if you intend to access the
 API multiple times from multiple processes, it is recommended.
+
+=item C<save_tokens_args =E<gt> [ args ],>
+
+Additional arguments passed to the save_tokens callback function after the
+token string. This can be used to pass things like database handles or
+other data to the callback along with the token string. Provide a reference
+to an array of arguments in the constructure. When the callback is
+called the arguments are passed to the callback as an array, so in the
+example below $arg1 will be "foo" and $arg2 will be "bar"
+
+    ...
+    save_tokens => \&save_tokens,
+    save_tokens_args => [ "foo", "bar" ],
+    ...
+
+    sub save_tokens {
+        my ($token_string, $arg1, $arg2) = @_;
+
+        ...
+    }
 
 =item C<token_string =E<gt> $token_string,>
 
