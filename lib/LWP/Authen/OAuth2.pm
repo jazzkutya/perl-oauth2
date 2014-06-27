@@ -290,11 +290,11 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 =head1 SYNOPSIS
@@ -691,6 +691,20 @@ L<LWP::UserAgent> object.
 
 Ben Tilly, C<< <btilly at gmail.com> >>
 
+currently maintained by Thomas Klausner, C<< <domm@cpan.org> >>
+
+=head2 Contributors
+
+=over
+
+=item * L<Thomas Klausner|https://github.com/domm>
+
+=item * L<Alexander Dutton|https://github.com/alexsdutton>
+
+=item * L<Chris|https://github.com/TheWatcher>
+
+=back
+
 =head1 BUGS
 
 Please report any bugs or feature requests to
@@ -731,7 +745,6 @@ L<http://cpanratings.perl.org/d/LWP-Authen-OAuth2>
 L<http://search.cpan.org/dist/LWP-Authen-OAuth2/>
 
 =back
-
 
 =head1 ACKNOWLEDGEMENTS
 
