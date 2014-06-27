@@ -1,15 +1,31 @@
 Revision history for LWP-Authen-OAuth2
 
-0.01    20130711 - 3:13 PM PDT
-        First version, released on an unsuspecting world with much
-        documentation and no useful tests.
+0.08
+	- NEW MAINTAINER: domm
+	- inverted Changelog (newest entry on top)
+	- Allow additional arguments to be passed to the save_tokens callback (Chris)
+	- Fixed copying required/optional params in collect_action_params (Alexander Dutton)
+	- Added overridable methods for returing authz and token endpoints (Alexander Dutton)
 
-0.02    20130712 - 2:54 PM PDT
-        *sigh*  My machine was not running all of the tests that module
-        starter installed.  Other environments did, and therefore failed.
-        Removed or fixed those.  (Really, I do not want to have end user
-        documentation in subclasses of parent methods that they were
-        supposed to override.)
+
+0.07    20131128 - 7:47 AM PST
+        - Property acknowledge domm
+
+
+0.06    20131128 - 7:47 AM PST
+        - Add Module::Load dependency
+        - Catch that the Google service provider was missing
+          s/flow/client_type/.
+        - Make syntax errors in a service provider less confusing to debug.
+
+
+0.05    20130720 - 12:38 PM PDT
+        - There was another (why don't I get to see these???)
+
+
+0.04    20130717 - 6:34 PM PDT
+        - Fix 2 minor POD formatting mistakes.
+
 
 0.03    20130715 - 7:26 PM PDT
         - Find more dependencies.
@@ -18,17 +34,16 @@ Revision history for LWP-Authen-OAuth2
         - Rename *_defaults to *_init to be more descriptive.
         - Another documentation pass.
 
-0.04    20130717 - 6:34 PM PDT
-        - Fix 2 minor POD formatting mistakes.
 
-0.05    20130720 - 12:38 PM PDT
-        - There was another (why don't I get to see these???)
+0.02    20130712 - 2:54 PM PDT
+        *sigh*  My machine was not running all of the tests that module
+        starter installed.  Other environments did, and therefore failed.
+        Removed or fixed those.  (Really, I do not want to have end user
+        documentation in subclasses of parent methods that they were
+        supposed to override.)
 
-0.06    20131128 - 7:47 AM PST
-        - Add Module::Load dependency
-        - Catch that the Google service provider was missing
-          s/flow/client_type/.
-        - Make syntax errors in a service provider less confusing to debug.
 
-0.07    20131128 - 7:47 AM PST
-        - Property acknowledge domm
+0.01    20130711 - 3:13 PM PDT
+        First version, released on an unsuspecting world with much
+        documentation and no useful tests.
+
