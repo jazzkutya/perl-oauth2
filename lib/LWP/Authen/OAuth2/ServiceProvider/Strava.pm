@@ -1,4 +1,4 @@
-package LWP::Authen::OAuth2::ServiceProvider::Google;
+package LWP::Authen::OAuth2::ServiceProvider::Strava;
 
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ Version 0.02
 
 =cut
 
-package LWP::Authen::OAuth2::ServiceProvider::Google;
+package LWP::Authen::OAuth2::ServiceProvider::Strava;
 our $VERSION = '0.02';
 
 =head1 SYNOPSIS
