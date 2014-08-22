@@ -88,7 +88,7 @@ sub delete {
 
 sub get {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::GET(@parameters);
     return $self->request($request, @rest);
 }
