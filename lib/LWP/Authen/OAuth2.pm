@@ -81,7 +81,7 @@ sub init {
 # Standard shortcut request methods.
 sub delete {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::DELETE(@parameters);
     return $self->request($request, @rest);
 }
@@ -95,21 +95,21 @@ sub get {
 
 sub head {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::HEAD(@parameters);
     return $self->request($request, @rest);
 }
 
 sub post {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters, (ref($parameters[1]) ? 2 : 1));
     my $request = HTTP::Request::Common::POST(@parameters);
     return $self->request($request, @rest);
 }
 
 sub put {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters, (ref($parameters[1]) ? 2 : 1));
     my $request = HTTP::Request::Common::PUT(@parameters);
     return $self->request($request, @rest);
 }
