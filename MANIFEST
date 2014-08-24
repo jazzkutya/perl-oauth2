@@ -18,5 +18,6 @@ t/LWP/Authen/OAuth2/AccessToken/Bearer.t
 t/LWP/Authen/OAuth2/Args.t
 t/LWP/Authen/OAuth2/ServiceProvider.t
 t/LWP/Authen/OAuth2/ServiceProvider/Google.t
+t/LWP/Authen/OAuth2/ServiceProvider/Strava.t
 t/manifest.t
 t/pod.t
