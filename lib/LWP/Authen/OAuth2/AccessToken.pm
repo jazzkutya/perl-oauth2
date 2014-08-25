@@ -85,8 +85,8 @@ sub should_refresh {
     my ($self, $early_refresh_time) = @_;
     # If the access tokens are short lived relative to $early_refresh_time
     # we cheat to avoid refreshing TOO often....
-    if ($self->{expires_in}/2 < $early_refresh_time) {
-        $early_refresh_time = $self->{expires_in}/2;
+    if ($self->expires_in/2 < $early_refresh_time) {
+        $early_refresh_time = $self->expires_in/2;
     }
     my $expires_in = $self->expires_in();
     if ($expires_in < $early_refresh_time) {
