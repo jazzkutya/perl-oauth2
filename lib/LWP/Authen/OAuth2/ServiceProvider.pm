@@ -47,6 +47,9 @@ sub init {
     # Now let us consume options.  2 args = required, 3 = defaulted.
     # In general subclasses should Just Work.
 
+    # need to read this first, since the later opts depend on it
+    $self->copy_option($opts, 'use_test_urls');
+
     # These are required, NOT provided by this class, but are by subclasses.
     for my $field (qw(token_endpoint authorization_endpoint)) {
         if ($self->can($field)) {
