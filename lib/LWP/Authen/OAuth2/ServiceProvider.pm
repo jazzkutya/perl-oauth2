@@ -205,6 +205,8 @@ sub post_to_token_endpoint {
     return $ua->post($self->token_endpoint(), [%$param]);
 }
 
+sub api_url_base { return '' } # override in subclass
+
 sub access_token_class {
     my ($self, $type) = @_;
 

@@ -168,6 +168,34 @@ sub authorization_url {
     }
 }
 
+sub api_url_base {
+    my $self = shift;
+    return $self->{service_provider}->api_url_base || '';
+}
+
+sub make_api_call {
+    my ($self, $uri, $params, $headers) = @_;
+    my $url = $uri =~ m|^http| ? $uri : $self->api_url_base.$uri;
+    if ($self->{service_provider}->can('default_api_headers')) {
+        my $service_provider_headers = $self->{service_provider}->default_api_headers;
+        $headers = ref $headers eq 'HASH' ? { %$headers, %$service_provider_headers } : $service_provider_headers || {};
+    }
+
+    my $response = $params ? $self->post($url, Content => encode_json($params), %$headers) : $self->get($url, %$headers);
+
+    if (! $response->is_success()) {
+        #$self->error('failed call to: '.$url.'; status_line='.$response->status_line.'; full error='.$response->error_as_HTML.'; content='.$response->content);
+        $self->{'_api_call_error'} = $response->error_as_HTML || $response->status_line;
+        return undef;
+    }
+
+    my $content = $response->content;
+    return 1 if ! $content; # success
+    return eval { decode_json($content) }; # return decoded JSON if response has a body
+}
+
+sub api_call_error { return shift->{'_api_call_error'}; }
+
 sub request_tokens {
     my ($self, %opts) = @_;
 
