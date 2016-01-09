@@ -62,6 +62,19 @@ sub to_ref {
     return { %$self };
 }
 
+=head2 C<expires_time>
+
+Estimate expiration time.  Not always correct, due to transit
+delays, clock skew, etc.
+
+=cut
+
+sub expires_time {
+    my $self = shift;
+    my $initial_expires_in = $self->{expires_in} || 3600;
+    return $self->{create_time} + $initial_expires_in;
+}
+
 =head2 C<expires_in>
 
 Estimate the seconds until expiration.  Not always correct, due to transit
@@ -71,8 +84,7 @@ delays, clock skew, etc.
 
 sub expires_in {
     my $self = shift;
-    my $initial_expires_in = $self->{expires_in} || 3600;
-    return $self->{create_time} + $initial_expires_in - time();
+    return $self->expires_time - time();
 }
 
 =head2 C<should_refresh>

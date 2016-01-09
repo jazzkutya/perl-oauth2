@@ -228,6 +228,12 @@ sub should_refresh {
     return $self->access_token->should_refresh($self->{early_refresh_time});
 }
 
+sub expires_time {
+    my $self = shift;
+    return 0 if ! $self->{access_token};
+    return $self->access_token->expires_time;
+}
+
 sub set_early_refresh_time {
     my ($self, $early_refresh_time) = @_;
     $self->{early_refresh_time} = $early_refresh_time;
