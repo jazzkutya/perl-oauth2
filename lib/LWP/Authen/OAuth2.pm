@@ -360,11 +360,11 @@ Here are examples of simple usage.
     # to use which type of request.  Note that argument processing is the
     # same as in LWP.  Thus the parameters array and headers hash are both
     # optional.
-    $oauth2->get($url, \@parameters, %header);
+    $oauth2->get($url, %header);
     $oauth2->post($url, \@parameters, %header);
-    $oauth2->put($url, \@parameters, %header);
-    $oauth2->delete($url, \@parameters, %header);
-    $oauth2->head($url, \@parameters, %header);
+    $oauth2->put($url, %header);
+    $oauth2->delete($url, %header);
+    $oauth2->head($url, %header);
 
     # And if you need more flexibility, you can use LWP::UserAgent's request
     # method
