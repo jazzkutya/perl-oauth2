@@ -324,11 +324,11 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 =head1 SYNOPSIS
@@ -364,7 +364,13 @@ LWP::Authen::OAuth2::ServiceProvider::Google
 
 LWP::Authen::OAuth2::ServiceProvider::Strava
 
-implemented by <Leon Wright|https://github.com/techman83>
+implemented by L<Leon Wright|https://github.com/techman83>
+
+=item * Dwolla
+
+LWP::Authen::OAuth2::ServiceProvider::Dwolla
+
+implemented by L<Adi Fairbank|https://github.com/adifairbank>
 
 =back
 
@@ -757,6 +763,8 @@ currently maintained by Thomas Klausner, C<< <domm@cpan.org> >>
 
 =item * L<Chris|https://github.com/TheWatcher>
 
+=item * L<Adi Fairbank|https://github.com/adifairbank>
+
 =back
 
 =head1 BUGS
@@ -822,6 +830,8 @@ specified
 C<ServiceProvider> work without requiring subclassing.
 
 =item * L<Leon Wright|https://github.com/techman83> for adding a L<Strava | http://strava.com> Service Provider and various bug fixes
+
+=item * L<Adi Fairbank|https://github.com/adifairbank> for adding a L<Dwolla | https://www.dwolla.com/> Service Provider and some other improvements
 
 =back
 

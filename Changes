@@ -1,5 +1,13 @@
 Revision history for LWP-Authen-OAuth2
 
+0.10    2016-01-11T20:28:13
+    - new class ServiceProvider::Dwolla (Adi Fairbank)
+    - new method OAuth2->make_api_call (Adi Fairbank)
+    - add configuration param use_test_urls (Adi Fairbank)
+    - add expires_time() method (Adi Fairbank)
+    - link to GitHub from META files; fix the string in LICENSE (Gabor Szabo)
+
+
 0.09	2014-08-25T10:59:11+0200
     - squashed some warnings (Leon Wright)
     - Strava Service Provider (Leon Wright)
@@ -17,30 +25,30 @@ Revision history for LWP-Authen-OAuth2
 
 
 0.07    20131128 - 7:47 AM PST
-        - Property acknowledge domm
+    - Property acknowledge domm
 
 
 0.06    20131128 - 7:47 AM PST
-        - Add Module::Load dependency
-        - Catch that the Google service provider was missing
-          s/flow/client_type/.
-        - Make syntax errors in a service provider less confusing to debug.
+    - Add Module::Load dependency
+    - Catch that the Google service provider was missing
+       s/flow/client_type/.
+    - Make syntax errors in a service provider less confusing to debug.
 
 
 0.05    20130720 - 12:38 PM PDT
-        - There was another (why don't I get to see these???)
+    - There was another (why don't I get to see these???)
 
 
 0.04    20130717 - 6:34 PM PDT
-        - Fix 2 minor POD formatting mistakes.
+    - Fix 2 minor POD formatting mistakes.
 
 
 0.03    20130715 - 7:26 PM PDT
-        - Find more dependencies.
-        - Rename flow to client_type in many places.
-        - Rename *_more_* to *_optional_* in ServiceProvider.
-        - Rename *_defaults to *_init to be more descriptive.
-        - Another documentation pass.
+    - Find more dependencies.
+    - Rename flow to client_type in many places.
+    - Rename *_more_* to *_optional_* in ServiceProvider.
+    - Rename *_defaults to *_init to be more descriptive.
+    - Another documentation pass.
 
 
 0.02    20130712 - 2:54 PM PDT

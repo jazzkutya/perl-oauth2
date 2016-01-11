@@ -35,5 +35,8 @@ sub default_api_headers {
     return { 'Content-Type' => 'application/vnd.dwolla.v1.hal+json', 'Accept' => 'application/vnd.dwolla.v1.hal+json' };
 }
 
+=head1 AUTHOR
+
+Adi Fairbank, C<< <https://github.com/adifairbank> >>
 
 1;
