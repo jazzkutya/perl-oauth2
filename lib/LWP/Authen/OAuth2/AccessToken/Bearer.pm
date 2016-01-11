@@ -13,13 +13,11 @@ sub _request {
 
     # One would hope for a 401 status, but the specification only requires
     # this header.  (Though recommends a 401 status.)
-    my $authenticate_header = $response->header("WWW-Authenticate") || "";
-    if ($authenticate_header =~ /\binvalid_token\b/) {
-        return ($response, 1);
-    }
-    else {
-        return ($response, 0);
-    }
+    my $try_refresh = ($response->header("WWW-Authenticate")||'') =~ m/\binvalid_token\b/
+      || ($response->header('Client-Warning')||'') =~ m/Missing Authenticate header/ # Dwolla does not send WWW-Authenticate
+      || $response->content() =~ m/\bExpiredAccessToken\b/
+      ? 1 : 0;
+    return ($response, $try_refresh);
 }
 
 =head1 NAME

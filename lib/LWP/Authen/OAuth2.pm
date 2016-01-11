@@ -169,6 +169,34 @@ sub authorization_url {
     }
 }
 
+sub api_url_base {
+    my $self = shift;
+    return $self->{service_provider}->api_url_base || '';
+}
+
+sub make_api_call {
+    my ($self, $uri, $params, $headers) = @_;
+    my $url = $uri =~ m|^http| ? $uri : $self->api_url_base.$uri;
+    if ($self->{service_provider}->can('default_api_headers')) {
+        my $service_provider_headers = $self->{service_provider}->default_api_headers;
+        $headers = ref $headers eq 'HASH' ? { %$headers, %$service_provider_headers } : $service_provider_headers || {};
+    }
+
+    my $response = $params ? $self->post($url, Content => encode_json($params), %$headers) : $self->get($url, %$headers);
+
+    if (! $response->is_success()) {
+        #$self->error('failed call to: '.$url.'; status_line='.$response->status_line.'; full error='.$response->error_as_HTML.'; content='.$response->content);
+        $self->{'_api_call_error'} = $response->error_as_HTML || $response->status_line;
+        return undef;
+    }
+
+    my $content = $response->content;
+    return 1 if ! $content; # success
+    return eval { decode_json($content) }; # return decoded JSON if response has a body
+}
+
+sub api_call_error { return shift->{'_api_call_error'}; }
+
 sub request_tokens {
     my ($self, %opts) = @_;
 
@@ -227,6 +255,12 @@ sub should_refresh {
     my $self = shift;
 
     return $self->access_token->should_refresh($self->{early_refresh_time});
+}
+
+sub expires_time {
+    my $self = shift;
+    return 0 if ! $self->{access_token};
+    return $self->access_token->expires_time;
 }
 
 sub set_early_refresh_time {
@@ -380,11 +414,11 @@ Here are examples of simple usage.
     # to use which type of request.  Note that argument processing is the
     # same as in LWP.  Thus the parameters array and headers hash are both
     # optional.
-    $oauth2->get($url, \@parameters, %header);
+    $oauth2->get($url, %header);
     $oauth2->post($url, \@parameters, %header);
-    $oauth2->put($url, \@parameters, %header);
-    $oauth2->delete($url, \@parameters, %header);
-    $oauth2->head($url, \@parameters, %header);
+    $oauth2->put($url, %header);
+    $oauth2->delete($url, %header);
+    $oauth2->head($url, %header);
 
     # And if you need more flexibility, you can use LWP::UserAgent's request
     # method
