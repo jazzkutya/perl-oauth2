@@ -6,6 +6,7 @@ lib/LWP/Authen/OAuth2/AccessToken/Bearer.pm
 lib/LWP/Authen/OAuth2/Args.pm
 lib/LWP/Authen/OAuth2/Overview.pod
 lib/LWP/Authen/OAuth2/ServiceProvider.pm
+lib/LWP/Authen/OAuth2/ServiceProvider/Dwolla.pm
 lib/LWP/Authen/OAuth2/ServiceProvider/Google.pm
 lib/LWP/Authen/OAuth2/ServiceProvider/Strava.pm
 Makefile.PL
