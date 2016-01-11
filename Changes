@@ -1,11 +1,19 @@
 Revision history for LWP-Authen-OAuth2
 
-0.08
-	- NEW MAINTAINER: domm
-	- inverted Changelog (newest entry on top)
-	- Allow additional arguments to be passed to the save_tokens callback (Chris)
-	- Fixed copying required/optional params in collect_action_params (Alexander Dutton)
-	- Added overridable methods for returing authz and token endpoints (Alexander Dutton)
+0.09	2014-08-25T10:59:11+0200
+    - squashed some warnings (Leon Wright)
+    - Strava Service Provider (Leon Wright)
+
+
+0.08	2014-06-27T00:00:00
+    - NEW MAINTAINER: domm
+    - inverted Changelog (newest entry on top)
+    - Allow additional arguments to be passed to the save_tokens
+      callback (Chris)
+    - Fixed copying required/optional params in
+      collect_action_params (Alexander Dutton)
+    - Added overridable methods for returing authz and token endpoints
+      (Alexander Dutton)
 
 
 0.07    20131128 - 7:47 AM PST

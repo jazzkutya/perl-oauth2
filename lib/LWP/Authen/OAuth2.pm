@@ -290,11 +290,11 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 =head1 SYNOPSIS
@@ -317,6 +317,24 @@ L<LWP::Authen::OAuth2::Overview>
 
 This module will not help with OAuth 1.  See the similarly named but
 unrelated L<LWP::Authen::OAuth> for a module that can help with that.
+
+Currently L<LWP::Authen::OAuth2> provides ready-to-use classes to use OAuth2 with
+
+=over
+
+=item * Google
+
+LWP::Authen::OAuth2::ServiceProvider::Google
+
+=item * Strava
+
+LWP::Authen::OAuth2::ServiceProvider::Strava
+
+implemented by <Leon Wright|https://github.com/techman83>
+
+=back
+
+You can also access any other OAuth2 service by setting up a plain C<LWP::Authen::OAuth2> object. If you do, and the service provider might be of interest to other people, please submit a patch so we can include it in this distribution, or release it as a standalone package.
 
 Here are examples of simple usage.
 
@@ -697,6 +715,8 @@ currently maintained by Thomas Klausner, C<< <domm@cpan.org> >>
 
 =over
 
+=item * L<Leon Wright|https://github.com/techman83>
+
 =item * L<Thomas Klausner|https://github.com/domm>
 
 =item * L<Alexander Dutton|https://github.com/alexsdutton>
@@ -754,10 +774,23 @@ Wellnhofer <wellnhofer@aevum.de> for Net::Google::Analytics::OAuth2 which
 was very enlightening while I was trying to figure out the details of how to
 connect to Google with OAuth2.
 
-Thanks to L<Thomas Klausner|https://github.com/domm> for reporting that client
+Thanks to
+
+=over
+
+=item * 
+
+L<Thomas Klausner|https://github.com/domm> for reporting that client
 type specific parameters were not available when the client type was properly
-specified, and to L<Alexander Dutton|https://github.com/alexsdutton> for making
+specified
+
+=item * L<Alexander Dutton|https://github.com/alexsdutton> for making
 C<ServiceProvider> work without requiring subclassing.
+
+=item * L<Leon Wright|https://github.com/techman83> for adding a L<Strava | http://strava.com> Service Provider and various bug fixes
+
+=back
+
 
 =head1 LICENSE AND COPYRIGHT
 
