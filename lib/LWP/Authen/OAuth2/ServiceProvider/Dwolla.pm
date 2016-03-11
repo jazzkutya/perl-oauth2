@@ -39,4 +39,6 @@ sub default_api_headers {
 
 Adi Fairbank, C<< <https://github.com/adifairbank> >>
 
+=cut
+
 1;
