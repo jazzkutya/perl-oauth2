@@ -1,5 +1,11 @@
 Revision history for LWP-Authen-OAuth2
 
+0.11	2016-03-11T12:02:25
+    - Ensure lib loads and instantiates (Leon Wright)
+    - Catch feature changes that break instantiation (Leon Wright)
+    - Allow 'use_test_urls' to be optional (Leon Wright)
+
+
 0.10    2016-01-11T20:28:13
     - new class ServiceProvider::Dwolla (Adi Fairbank)
     - new method OAuth2->make_api_call (Adi Fairbank)
