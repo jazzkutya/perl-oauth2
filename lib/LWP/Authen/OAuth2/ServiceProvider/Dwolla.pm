@@ -31,6 +31,11 @@ sub authorization_required_params {
     return ('scope', $self->SUPER::authorization_required_params());
 }
 
+sub authorization_optional_params {
+    my $self = shift;
+    return ($self->SUPER::authorization_optional_params(), 'dwolla_landing');
+}
+
 sub default_api_headers {
     return { 'Content-Type' => 'application/vnd.dwolla.v1.hal+json', 'Accept' => 'application/vnd.dwolla.v1.hal+json' };
 }
