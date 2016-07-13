@@ -509,7 +509,7 @@ provider.  Your subclass cannot function without this.
 
 This method receives your class name and the passed in C<client_type>.
 It is supposed to make sure that the class that handles that
-C<client_type> is loaded, and then return it.  This let's you handle service
+C<client_type> is loaded, and then return it.  This lets you handle service
 providers with different behavior for different types of clients.
 
 The base implementation just returns your class name.

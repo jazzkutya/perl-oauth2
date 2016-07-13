@@ -35,6 +35,10 @@ sub default_api_headers {
     return { 'Content-Type' => 'application/vnd.dwolla.v1.hal+json', 'Accept' => 'application/vnd.dwolla.v1.hal+json' };
 }
 
+=head1 NAME
+
+LWP::Authen::OAuth2::ServiceProvider::Dwolla - Access Dwolla OAuth2 APIs
+
 =head1 AUTHOR
 
 Adi Fairbank, C<< <https://github.com/adifairbank> >>

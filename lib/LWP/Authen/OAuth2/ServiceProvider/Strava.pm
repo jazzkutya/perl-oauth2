@@ -59,7 +59,7 @@ your application. You'll need to set C<redirect_uri> with them, which will
 need to be an C<https://...> URL under your control. (Though you can set
 127.0.0.1 if you are using this in a script).
 
-All the standard LWP::Useragent methods are availble, but it will also
+All the standard LWP::Useragent methods are available, but it will also
 take a Request Object if you need something more. (LWP::Authen:OAuth2 contains
 all the relevant doco).
 

@@ -333,7 +333,7 @@ our $VERSION = '0.11';
 
 =head1 SYNOPSIS
 
-OAuth 2 is a protocol that let's a I<user> tell a I<service provider> that a
+OAuth 2 is a protocol that lets a I<user> tell a I<service provider> that a
 I<consumer> has permission to use the I<service provider>'s APIs to do things
 that require access to the I<user>'s account.  This module tries to make life
 easier for someone who wants to write a I<consumer> in Perl.
