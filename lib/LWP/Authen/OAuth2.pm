@@ -324,11 +324,11 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 =head1 VERSION
 
-Version 0.10
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 =head1 SYNOPSIS
@@ -833,8 +833,9 @@ C<ServiceProvider> work without requiring subclassing.
 
 =item * L<Adi Fairbank|https://github.com/adifairbank> for adding a L<Dwolla | https://www.dwolla.com/> Service Provider and some other improvements
 
-=back
+=item * Nick Morrott for fixing some documentation typos
 
+=back
 
 =head1 LICENSE AND COPYRIGHT
 

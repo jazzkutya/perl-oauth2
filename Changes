@@ -1,5 +1,9 @@
 Revision history for LWP-Authen-OAuth2
 
+0.12    2016-07-13T12:44:47
+    - fix typos in documentation (Nick Morrott, RT115463, RT115464)
+
+
 0.11	2016-03-11T12:02:25
     - Ensure lib loads and instantiates (Leon Wright)
     - Catch feature changes that break instantiation (Leon Wright)
