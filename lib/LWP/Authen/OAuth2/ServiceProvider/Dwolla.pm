@@ -33,7 +33,7 @@ sub authorization_required_params {
 
 sub authorization_optional_params {
     my $self = shift;
-    return ($self->SUPER::authorization_optional_params(), 'dwolla_landing');
+    return ($self->SUPER::authorization_optional_params(), qw/dwolla_landing verified_account/);
 }
 
 sub default_api_headers {
