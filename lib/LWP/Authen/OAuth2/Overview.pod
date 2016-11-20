@@ -1,3 +1,7 @@
+=head1 NAME
+
+LWP::Authen::OAuth2::Overview - Overview of accessing OAuth2 APIs with LWP::Authen::OAuth2
+
 =head1 Introduction
 
 This attempts to be the document that I wished existed when I first tried to
@@ -123,7 +127,7 @@ stored on your end.  This includes tokens that will let you access private
 information for the I<user>.  You need to be able to securely store and
 access these.
 
-L<LWP::Authen::OAuth2> does not adress this, beyond providing hooks that you
+L<LWP::Authen::OAuth2> does not address this, beyond providing hooks that you
 are free to use as you see fit.
 
 =item Build interaction asking for I<user> permission
@@ -144,7 +148,7 @@ if the I<service provider> is sure that they know where to send the user
 (they know your I<client_id>, your I<redirect_uri> makes sense to them) then
 they will be sent to the I<redirect_uri> to pass information back to you.
 
-If you succeeded, you will receieve a I<code> in some way.  For instance if
+If you succeeded, you will receive a I<code> in some way.  For instance if
 your I<redirect_uri> is a URL, it will have a get parameter named C<code>.
 
 You could get an C<error> parameter back instead.  See

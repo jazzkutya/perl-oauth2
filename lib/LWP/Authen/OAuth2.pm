@@ -54,6 +54,7 @@ sub init {
     $self->copy_option(\%opts, "is_strict", 1);
     $self->copy_option(\%opts, "prerefresh", undef);
     $self->copy_option(\%opts, "save_tokens", undef);
+    $self->copy_option(\%opts, "save_tokens_args", undef);
     $self->copy_option(\%opts, "token_string", undef);
     $self->copy_option(\%opts, "user_agent", undef);
 
@@ -63,7 +64,7 @@ sub init {
         if ($@) {
             croak("While decoding token_string: $@");
         }
-        
+
         my $class = $tokens->{_class}
             or croak("No _class in token_string '$self->{token_string}'");
 
@@ -80,35 +81,35 @@ sub init {
 # Standard shortcut request methods.
 sub delete {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::DELETE(@parameters);
     return $self->request($request, @rest);
 }
 
 sub get {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::GET(@parameters);
     return $self->request($request, @rest);
 }
 
 sub head {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters,1);
     my $request = HTTP::Request::Common::HEAD(@parameters);
     return $self->request($request, @rest);
 }
 
 sub post {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters, (ref($parameters[1]) ? 2 : 1));
     my $request = HTTP::Request::Common::POST(@parameters);
     return $self->request($request, @rest);
 }
 
 sub put {
     my ($self, @parameters) = @_;
-    my @rest = $self->user_agent->_process_colonic_headers(\@parameters);
+    my @rest = $self->user_agent->_process_colonic_headers(\@parameters, (ref($parameters[1]) ? 2 : 1));
     my $request = HTTP::Request::Common::PUT(@parameters);
     return $self->request($request, @rest);
 }
@@ -144,7 +145,7 @@ sub _set_tokens {
         $self->{access_token} = $tokens;
         if ($self->{save_tokens} and not $skip_save) {
             my $as_string = $self->token_string;
-            $self->{save_tokens}->($as_string);
+            $self->{save_tokens}->($as_string, @{$self->{save_tokens_args}});
         }
         return;
     }
@@ -323,16 +324,16 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 =head1 VERSION
 
-Version 0.07
+Version 0.10
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.11';
 
 
 =head1 SYNOPSIS
 
-OAuth 2 is a protocol that let's a I<user> tell a I<service provider> that a
+OAuth 2 is a protocol that lets a I<user> tell a I<service provider> that a
 I<consumer> has permission to use the I<service provider>'s APIs to do things
 that require access to the I<user>'s account.  This module tries to make life
 easier for someone who wants to write a I<consumer> in Perl.
@@ -351,6 +352,30 @@ L<LWP::Authen::OAuth2::Overview>
 This module will not help with OAuth 1.  See the similarly named but
 unrelated L<LWP::Authen::OAuth> for a module that can help with that.
 
+Currently L<LWP::Authen::OAuth2> provides ready-to-use classes to use OAuth2 with
+
+=over
+
+=item * Google
+
+LWP::Authen::OAuth2::ServiceProvider::Google
+
+=item * Strava
+
+LWP::Authen::OAuth2::ServiceProvider::Strava
+
+implemented by L<Leon Wright|https://github.com/techman83>
+
+=item * Dwolla
+
+LWP::Authen::OAuth2::ServiceProvider::Dwolla
+
+implemented by L<Adi Fairbank|https://github.com/adifairbank>
+
+=back
+
+You can also access any other OAuth2 service by setting up a plain C<LWP::Authen::OAuth2> object. If you do, and the service provider might be of interest to other people, please submit a patch so we can include it in this distribution, or release it as a standalone package.
+
 Here are examples of simple usage.
 
     use LWP::Authen::OAuth2;
@@ -364,6 +389,7 @@ Here are examples of simple usage.
 
                      # Optional hook, but recommended.
                      save_tokens => \&save_tokens,
+                     save_tokens_args => [ $dbh ],
 
                      # This is for when you have tokens from last time.
                      token_string => $token_string.
@@ -403,7 +429,7 @@ Here are examples of simple usage.
     # And if you need more flexibility, you can use LWP::UserAgent's request
     # method
     $oauth2->request($http_request, $content_file);
-    
+
     # In some flows you can refresh tokens, in others you have to go through
     # the handshake yourself.  This method lets you know whether a refresh
     # looks possible.
@@ -575,6 +601,26 @@ process that needs to construct a C<$oauth2> object.
 By default this is not provided.  However if you intend to access the
 API multiple times from multiple processes, it is recommended.
 
+=item C<save_tokens_args =E<gt> [ args ],>
+
+Additional arguments passed to the save_tokens callback function after the
+token string. This can be used to pass things like database handles or
+other data to the callback along with the token string. Provide a reference
+to an array of arguments in the constructure. When the callback is
+called the arguments are passed to the callback as an array, so in the
+example below $arg1 will be "foo" and $arg2 will be "bar"
+
+    ...
+    save_tokens => \&save_tokens,
+    save_tokens_args => [ "foo", "bar" ],
+    ...
+
+    sub save_tokens {
+        my ($token_string, $arg1, $arg2) = @_;
+
+        ...
+    }
+
 =item C<token_string =E<gt> $token_string,>
 
 Supply tokens generated in a previous request so that you don't have to ask
@@ -703,6 +749,24 @@ L<LWP::UserAgent> object.
 
 Ben Tilly, C<< <btilly at gmail.com> >>
 
+currently maintained by Thomas Klausner, C<< <domm@cpan.org> >>
+
+=head2 Contributors
+
+=over
+
+=item * L<Leon Wright|https://github.com/techman83>
+
+=item * L<Thomas Klausner|https://github.com/domm>
+
+=item * L<Alexander Dutton|https://github.com/alexsdutton>
+
+=item * L<Chris|https://github.com/TheWatcher>
+
+=item * L<Adi Fairbank|https://github.com/adifairbank>
+
+=back
+
 =head1 BUGS
 
 Please report any bugs or feature requests to
@@ -744,7 +808,6 @@ L<http://search.cpan.org/dist/LWP-Authen-OAuth2/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
 
 Thanks to L<Rent.com|http://www.rent.com> for their generous support in
@@ -753,8 +816,25 @@ Wellnhofer <wellnhofer@aevum.de> for Net::Google::Analytics::OAuth2 which
 was very enlightening while I was trying to figure out the details of how to
 connect to Google with OAuth2.
 
-Thanks to Thomas Klausner aka domm for reporting that client type specific
-parameters were not available when the client type was properly specified.
+Thanks to
+
+=over
+
+=item * 
+
+L<Thomas Klausner|https://github.com/domm> for reporting that client
+type specific parameters were not available when the client type was properly
+specified
+
+=item * L<Alexander Dutton|https://github.com/alexsdutton> for making
+C<ServiceProvider> work without requiring subclassing.
+
+=item * L<Leon Wright|https://github.com/techman83> for adding a L<Strava | http://strava.com> Service Provider and various bug fixes
+
+=item * L<Adi Fairbank|https://github.com/adifairbank> for adding a L<Dwolla | https://www.dwolla.com/> Service Provider and some other improvements
+
+=back
+
 
 =head1 LICENSE AND COPYRIGHT
 

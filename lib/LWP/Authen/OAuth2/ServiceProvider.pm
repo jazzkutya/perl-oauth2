@@ -48,7 +48,7 @@ sub init {
     # In general subclasses should Just Work.
 
     # need to read this first, since the later opts depend on it
-    $self->copy_option($opts, 'use_test_urls');
+    $self->copy_option($opts, 'use_test_urls') if defined $opts->{use_test_urls};
 
     # These are required, NOT provided by this class, but are by subclasses.
     for my $field (qw(token_endpoint authorization_endpoint)) {
@@ -84,7 +84,7 @@ sub authorization_url {
     my ($self, $oauth2, @rest) = @_;
     my $param
         = $self->collect_action_params("authorization", $oauth2, @rest);
-    my $uri = URI->new($self->{"authorization_endpoint"});
+    my $uri = URI->new($self->authorization_endpoint());
     $uri->query_form(%$param);
     return $uri->as_string;
 }
@@ -184,7 +184,7 @@ sub collect_action_params {
         my $result = {
             %$default,
             (
-                map $oauth2_args->{$_},
+                map {($_, $oauth2_args->{$_})}
                     @{ $self->{"$action\_required_params"} },
                     @{ $self->{"$action\_optional_params"} }
             ),
@@ -230,7 +230,7 @@ sub construct_tokens {
     }
     my $data = eval {decode_json($content)};
     my $parse_error = $@;
-    my $token_endpoint = $self->token_endpoint;
+    my $token_endpoint = $self->token_endpoint();
 
     # Can this have done wrong?  Let me list the ways...
     if ($parse_error) {
@@ -347,6 +347,17 @@ sub service_provider_class {
             croak("Service provider '$short_name' not found");
         }
     }
+}
+
+# DEFAULTS (can be overridden)
+sub authorization_endpoint {
+    my $self = shift;
+    return $self->{"authorization_endpoint"};
+}
+
+sub token_endpoint {
+    my $self = shift;
+    return $self->{"token_endpoint"};
 }
 
 # DEFAULTS (should be overridden)
@@ -498,7 +509,7 @@ provider.  Your subclass cannot function without this.
 
 This method receives your class name and the passed in C<client_type>.
 It is supposed to make sure that the class that handles that
-C<client_type> is loaded, and then return it.  This let's you handle service
+C<client_type> is loaded, and then return it.  This lets you handle service
 providers with different behavior for different types of clients.
 
 The base implementation just returns your class name.
