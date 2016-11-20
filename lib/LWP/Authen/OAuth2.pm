@@ -700,6 +700,30 @@ L<LWP::UserAgent>.)
 Issue any C<request> that you could issue with L<LWP::UserAgent>,
 except that it will be properly signed to go to an OAuth 2 protected URL.
 
+=head2 C<$oauth2-E<gt>make_api_call($uri, $params, $headers)>
+
+This is a convenience method which makes a call to an OAuth2 API endpoint
+given by $uri, and returns the JSON response decoded to a hash.  If the
+$params hashref arg is set, its contents will be JSON encoded and sent as
+POST request content; otherwise it will make a GET request.
+Optional $headers may be sent which will be passed through to
+C<$oauth-E<gt>get()> or C<$oauth-E<gt>post()>.
+
+If the call succeeds, it will return the response's JSON content decoded
+as hash, or if no response body was returned, a value of 1 to indicate success.
+On failure returns undef, and error message is available from
+C<$oauth2-E<gt>api_call_error()>.
+
+=head2 C<$oauth2-E<gt>api_call_error()>
+
+If an error occurred in C<$oauth2-E<gt>make_api_call()>, this method will
+return it.  The error message comes from C<HTTP::Response-E<gt>error_as_HTML()>.
+
+=head2 C<$oauth2-E<gt>api_url_base()>
+
+Returns the base URL of the service provider, which is sometimes useful to be
+used in the content of OAuth2 API calls.
+
 =head2 C<$oauth2-E<gt>can_refresh_tokens>
 
 Is sufficient information available to try to refresh tokens?
@@ -714,6 +738,11 @@ Set how many seconds before the end of token expiration the method
 C<should_refresh> will start turning true.  Values over half the initial
 expiration time of access tokens will be ignored to avoid refreshing too
 often.  This defaults to 300.
+
+=head2 C<$oauth2-E<gt>expires_time()>
+
+Returns the raw epoch expiration time of the current access token.
+Typically this is 3600 seconds greater than the time of token creation.
 
 =head2 C<$oauth2-E<gt>set_is_strict($mode)>
 
