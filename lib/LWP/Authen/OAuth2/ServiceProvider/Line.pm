@@ -77,7 +77,7 @@ LWP::Authen::OAuth2::ServiceProvider::Line - Access Line OAuth2 API v2
         client_secret    => 'line_client_secret'  # Retrieved from https://developers.line.me/
     );
 
-    my $url = $oauth2->authorization_url();
+    my $url = $oauth2->authorization_url(state => $state);
 
     # ... Send user to authorization URL and get authorization $code ...
 
