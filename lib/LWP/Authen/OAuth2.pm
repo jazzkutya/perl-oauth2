@@ -807,6 +807,8 @@ currently maintained by Thomas Klausner, C<< <domm@cpan.org> >>
 
 =item * L<Adi Fairbank|https://github.com/adifairbank>
 
+=item * L<Adam Millerchip|https://github.com/amillerchip>
+
 =back
 
 =head1 BUGS
@@ -874,6 +876,8 @@ C<ServiceProvider> work without requiring subclassing.
 =item * L<Leon Wright|https://github.com/techman83> for adding a L<Strava | http://strava.com> Service Provider and various bug fixes
 
 =item * L<Adi Fairbank|https://github.com/adifairbank> for adding a L<Dwolla | https://www.dwolla.com/> Service Provider and some other improvements
+
+=item * L<Adam Millerchip|https://github.com/amillerchip> for adding a L<Line | https://line.me> Service Provider and some refactoring
 
 =item * Nick Morrott for fixing some documentation typos
 
