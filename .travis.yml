@@ -10,7 +10,7 @@ perl:
   - "5.14"
   - "5.12"
 
-install: cpanm -n --skip-satisfied Devel::Cover::Report::Coveralls perl-oauth2
+install: cpanm -n --skip-satisfied Devel::Cover::Report::Coveralls LWP-Authen-OAuth
 script:
     - PERL5OPT=-MDevel::Cover prove -lv t
 
