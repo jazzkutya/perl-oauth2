@@ -832,7 +832,7 @@ You can also look for information at:
 
 =item Github (submit patches here)
 
-L<https://github.com/btilly/perl-oauth2>
+L<https://github.com/domm/perl-oauth2>
 
 =item RT: CPAN's request tracker (report bugs here)
 
