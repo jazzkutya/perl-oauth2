@@ -852,9 +852,9 @@ L<http://annocpan.org/dist/LWP-Authen-OAuth2>
 
 L<http://cpanratings.perl.org/d/LWP-Authen-OAuth2>
 
-=item Search CPAN
+=item MetaCPAN
 
-L<http://search.cpan.org/dist/LWP-Authen-OAuth2/>
+L<https://metacpan.org/release/LWP-Authen-OAuth2>
 
 =back
 
