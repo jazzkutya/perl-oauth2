@@ -385,6 +385,12 @@ L<LWP::Authen::OAuth2::ServiceProvider::Strava>
 
 implemented by L<Leon Wright|https://github.com/techman83>
 
+=item * Yahoo
+
+L<LWP::Authen::OAuth2::ServiceProvider::Yahoo>
+
+implemented by L<Michael Stevens|https://github.com/michael-stevens>
+
 =back
 
 You can also access any other OAuth2 service by setting up a plain C<LWP::Authen::OAuth2> object. If you do, and the service provider might be of interest to other people, please submit a patch so we can include it in this distribution, or release it as a standalone package.
@@ -832,7 +838,7 @@ You can also look for information at:
 
 =item Github (submit patches here)
 
-L<https://github.com/btilly/perl-oauth2>
+L<https://github.com/domm/perl-oauth2>
 
 =item RT: CPAN's request tracker (report bugs here)
 
