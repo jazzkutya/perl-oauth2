@@ -885,6 +885,8 @@ C<ServiceProvider> work without requiring subclassing.
 
 =item * L<Adam Millerchip|https://github.com/amillerchip> for adding a L<Line | https://line.me> Service Provider and some refactoring
 
+=item * L<Michael Stevens|https://github.com/mstevens> for adding a C<Yahoo | https://developer.yahoo.com> Service Provider and some dist cleanup
+
 =item * Nick Morrott for fixing some documentation typos
 
 =back
