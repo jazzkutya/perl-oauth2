@@ -649,7 +649,7 @@ tokens too quickly, so this can be important.
 =item C<user_agent =E<gt> $ua,>
 
 What user agent gets used under the hood?  Defaults to a new
-L<lWP::UserAgent> created on the fly.
+L<LWP::UserAgent> created on the fly.
 
 =back
 
