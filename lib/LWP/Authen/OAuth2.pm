@@ -216,9 +216,12 @@ sub refresh_access_token {
             if (not (ref($tokens))) {
                 # Did I get JSON?
                 my $data = eval {decode_json($tokens)};
+
                 if ($data and not $@) {
-                    # Assume I got it.
-                    $tokens = $data;
+                    my $class = $data->{_class} or croak("No _class in token_string '$tokens'");
+                    eval {load($class)};
+                    if ($@) { croak("Can't load access token class '$class': $@"); }
+                    $tokens = $class->from_ref($data);
                 }
             }
             return $self->_set_tokens(tokens => $tokens, skip_save => 1);
