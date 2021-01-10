@@ -1,4 +1,8 @@
 package LWP::Authen::OAuth2::Args;
+
+# ABSTRACT: Args
+# VERSION
+
 use warnings;
 use strict;
 

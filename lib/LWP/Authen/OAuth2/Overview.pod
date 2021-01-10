@@ -1,3 +1,6 @@
+# ABSTRACT: Overview of accessing OAuth2 APIs with LWP::Authen::OAuth2
+# PODNAME: LWP::Authen::OAuth2::Overview
+
 =head1 NAME
 
 LWP::Authen::OAuth2::Overview - Overview of accessing OAuth2 APIs with LWP::Authen::OAuth2
@@ -628,12 +631,3 @@ redirects.  But the I<consumer> needs to be aware of it.
 
 =back
 
-=head1 AUTHOR
-
-Ben Tilly, C<< <btilly at gmail.com> >>
-
-=head1 ACKNOWLEDGEMENTS
-
-Thanks to L<Rent.com|http://www.rent.com> for their generous support in
-letting me develop and release this module.  My thanks also to Keith Cascio
-C<< <cascio@helminthist.net> >> for very helpful feedback on early drafts.

@@ -1,12 +1,14 @@
 package LWP::Authen::OAuth2::ServiceProvider::Dwolla;
 
+# ABSTRACT: Access Dwolla API v2
+# VERSION
+
 use strict;
 use warnings;
 
 use base qw/LWP::Authen::OAuth2::ServiceProvider/;
 
 use JSON qw/decode_json/;
-
 
 sub authorization_endpoint {
     my $self = shift;
@@ -39,10 +41,6 @@ sub authorization_optional_params {
 sub default_api_headers {
     return { 'Content-Type' => 'application/vnd.dwolla.v1.hal+json', 'Accept' => 'application/vnd.dwolla.v1.hal+json' };
 }
-
-=head1 NAME
-
-LWP::Authen::OAuth2::ServiceProvider::Dwolla - Access Dwolla API v2
 
 =head1 SYNOPSIS
 
@@ -105,36 +103,6 @@ L<https://developers.dwolla.com/>
 =head1 AUTHOR
 
 Adi Fairbank, C<< <https://github.com/adifairbank> >>
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc LWP::Authen::OAuth2::ServiceProvider
-
-You can also look for information at:
-
-=over 4
-
-=item Github (submit patches here)
-
-CPAN maintainer's branch: L<https://github.com/domm/perl-oauth2>
-
-Branch where I work on Dwolla support: L<https://github.com/adifairbank/perl-oauth2>
-
-=item RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=LWP-Authen-OAuth2>
-
-=item AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/LWP-Authen-OAuth2>
-
-=item CPAN Ratings
-
-L<http://cpanratings.perl.org/d/LWP-Authen-OAuth2>
-
-=back
 
 =cut
 

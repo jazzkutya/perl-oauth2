@@ -1,5 +1,8 @@
 package LWP::Authen::OAuth2::ServiceProvider::Line;
 
+# ABSTRACT: Access Line OAuth2 API v2
+# VERSION
+
 use strict;
 use warnings;
 
@@ -63,10 +66,6 @@ sub access_token_class {
 }
 
 =pod
-
-=head1 NAME
-
-LWP::Authen::OAuth2::ServiceProvider::Line - Access Line OAuth2 API v2
 
 =head1 SYNOPSIS
 

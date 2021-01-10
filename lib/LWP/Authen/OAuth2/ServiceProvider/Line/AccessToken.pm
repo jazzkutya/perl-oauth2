@@ -1,5 +1,8 @@
 package LWP::Authen::OAuth2::ServiceProvider::Line::AccessToken;
 
+# ABSTRACT: Line AccessToken
+# VERSION
+
 use strict;
 use warnings;
 use parent 'LWP::Authen::OAuth2::AccessToken::Bearer';

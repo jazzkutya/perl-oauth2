@@ -1,5 +1,8 @@
 package LWP::Authen::OAuth2::ServiceProvider::Strava;
 
+# ABSTRACT: Access Strava using OAuth2
+# VERSION
+
 use strict;
 use warnings;
 
@@ -42,9 +45,6 @@ Version 0.02
 
 =cut
 
-package LWP::Authen::OAuth2::ServiceProvider::Strava;
-our $VERSION = '0.02';
-
 =head1 SYNOPSIS
 
 See L<http://strava.github.io/api/> for Strava's own documentation. Strava's
@@ -66,47 +66,6 @@ all the relevant doco).
 =head1 AUTHOR
 
 Leon Wright, C<< <techman@cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-lwp-authen-oauth2 at rt.cpan.org>, or through
-the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=LWP-Authen-OAuth2>.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc LWP::Authen::OAuth2::ServiceProvider
-
-You can also look for information at:
-
-=over 4
-
-=item Github (submit patches here)
-
-L<https://github.com/domm/perl-oauth2>
-
-=item RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=LWP-Authen-OAuth2>
-
-=item AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/LWP-Authen-OAuth2>
-
-=item CPAN Ratings
-
-L<http://cpanratings.perl.org/d/LWP-Authen-OAuth2>
-
-=back
-
-=head1 LICENSE AND COPYRIGHT
-
-This software is copyright (c) 2014 by Leon Wright.
-
-This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
 
 =cut
 
