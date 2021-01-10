@@ -458,8 +458,8 @@ specified
 
 # AUTHORS
 
-- Thomas Klausner <domm@plix.at>
 - Ben Tilly, &lt;btilly at gmail.com>
+- Thomas Klausner <domm@plix.at>
 
 # COPYRIGHT AND LICENSE
 

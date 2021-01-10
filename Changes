@@ -1,6 +1,8 @@
 Revision history for LWP-Authen-OAuth2
 
 {{$NEXT}}
+
+0.18      2021-01-10 22:49:23+01:00
     - dist housekeeping, Dist::Zilla::PluginBundle::Author::DOMM
 
 
