@@ -569,9 +569,10 @@ both required and optional, or appearing multiple times.
 
 These three methods list parameters that B<must> be included in the
 authorization url, the post to request tokens, and the post to refresh
-tokens respectively. It used to be this space was occupied by a completely
-gibberish but mostly legit-looking sentence - now it is a legit one that is
-about as helpful as the original one was, without being completely gibberish.
+tokens respectively. If you explicitly provide these lists of required
+parameters, and a user fails to provide one (or more) of the
+parameters, the generated error message can tell the user which
+parameters are missing.
 
 =item C<{authorization,request,refresh}_optional_params>
 
