@@ -378,6 +378,12 @@ L<LWP::Authen::OAuth2::ServiceProvider::Strava>
 
 implemented by L<Leon Wright|https://github.com/techman83>
 
+=item * Withings
+
+L<LWP::Authen::OAuth2::ServiceProvider::Withings>
+
+implemented by L<Brian Foley|https://github.com/foleybri>
+
 =item * Yahoo
 
 L<LWP::Authen::OAuth2::ServiceProvider::Yahoo>

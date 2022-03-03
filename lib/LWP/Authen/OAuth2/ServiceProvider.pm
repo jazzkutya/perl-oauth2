@@ -463,6 +463,8 @@ hopefully useful configuration and documentation:
 
 =item L<LWP::Authen::OAuth2::ServiceProvider::Strava|Strava>
 
+=item L<LWP::Authen::OAuth2::ServiceProvider::Withings|Withings>
+
 =item L<LWP::Authen::OAuth2::ServiceProvider::Yahoo|Yahoo>
 
 =back

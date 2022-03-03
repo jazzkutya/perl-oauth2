@@ -51,6 +51,12 @@ Currently [LWP::Authen::OAuth2](https://metacpan.org/pod/LWP%3A%3AAuthen%3A%3AOA
 
     implemented by [Leon Wright](https://github.com/techman83)
 
+- Withings
+
+    [LWP::Authen::OAuth2::ServiceProvider::Withings](https://metacpan.org/pod/LWP%3A%3AAuthen%3A%3AOAuth2%3A%3AServiceProvider%3A%3AWithings)
+
+    implemented by [Brian Foley](https://github.com/foleybri)
+
 - Yahoo
 
     [LWP::Authen::OAuth2::ServiceProvider::Yahoo](https://metacpan.org/pod/LWP%3A%3AAuthen%3A%3AOAuth2%3A%3AServiceProvider%3A%3AYahoo)
@@ -455,6 +461,7 @@ specified
 - [Adam Millerchip](https://github.com/amillerchip) for adding a [Line ](https://metacpan.org/pod/%20https%3A#line.me) Service Provider and some refactoring
 - [Michael Stevens](https://github.com/mstevens) for adding a `Yahoo | https://developer.yahoo.com` Service Provider and some dist cleanup
 - Nick Morrott for fixing some documentation typos
+- [Brian Foley](https://github.com/foleybri) for adding a https://developer.withings.com Service Provider
 
 # AUTHORS
 
