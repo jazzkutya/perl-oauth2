@@ -4,7 +4,7 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 # VERSION
 
-version 0.18
+version 0.19
 
 # SYNOPSIS
 
@@ -461,7 +461,6 @@ specified
 - [Adam Millerchip](https://github.com/amillerchip) for adding a [Line ](https://metacpan.org/pod/%20https%3A#line.me) Service Provider and some refactoring
 - [Michael Stevens](https://github.com/mstevens) for adding a `Yahoo | https://developer.yahoo.com` Service Provider and some dist cleanup
 - Nick Morrott for fixing some documentation typos
-- [Brian Foley](https://github.com/foleybri) for adding a https://developer.withings.com Service Provider
 
 # AUTHORS
 
@@ -470,7 +469,7 @@ specified
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 - 2021 by Ben Tilly, Rent.com, Thomas Klausner.
+This software is copyright (c) 2013 - 2022 by Ben Tilly, Rent.com, Thomas Klausner.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
