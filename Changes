@@ -1,6 +1,8 @@
 Revision history for LWP-Authen-OAuth2
 
 {{$NEXT}}
+
+0.20      2023-01-16 17:29:43+01:00
     - keep param default value in non strict mode (André Brás)
 
 
