@@ -800,13 +800,15 @@ L<LWP::UserAgent> object.
 
 =item * L<Thomas Klausner|https://github.com/domm>
 
-=item * L<Alexander Dutton|https://github.com/alexsdutton>
+=item * L<Alex Dutton|https://github.com/alexdutton>
 
 =item * L<Chris|https://github.com/TheWatcher>
 
 =item * L<Adi Fairbank|https://github.com/adifairbank>
 
 =item * L<Adam Millerchip|https://github.com/amillerchip>
+
+=item * L<André Brás|https://github.com/whity>
 
 =back
 
@@ -828,7 +830,7 @@ L<Thomas Klausner|https://github.com/domm> for reporting that client
 type specific parameters were not available when the client type was properly
 specified
 
-=item * L<Alexander Dutton|https://github.com/alexsdutton> for making
+=item * L<Alex Dutton|https://github.com/alexdutton> for making
 C<ServiceProvider> work without requiring subclassing.
 
 =item * L<Leon Wright|https://github.com/techman83> for adding a L<Strava | http://strava.com> Service Provider and various bug fixes

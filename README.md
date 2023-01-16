@@ -4,7 +4,7 @@ LWP::Authen::OAuth2 - Make requests to OAuth2 APIs.
 
 # VERSION
 
-version 0.19
+version 0.20
 
 # SYNOPSIS
 
@@ -440,6 +440,7 @@ Get the user agent.  The default if none was explicitly set is a new
 - [Chris](https://github.com/TheWatcher)
 - [Adi Fairbank](https://github.com/adifairbank)
 - [Adam Millerchip](https://github.com/amillerchip)
+- [André Brás](https://github.com/whity)
 
 # ACKNOWLEDGEMENTS
 
