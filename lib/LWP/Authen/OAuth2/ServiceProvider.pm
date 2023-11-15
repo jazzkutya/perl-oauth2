@@ -101,9 +101,9 @@ sub request_tokens {
 
 sub can_refresh_tokens {
     my ($self, $oauth2, %opt) = @_;
-    my %default = $self->refresh_default_params;
+    my %default = %{$self->{refresh_default_params}};
     my $oauth2_args = $oauth2->for_service_provider;
-    for my $param ($self->refresh_required_params) {
+    for my $param (@{$self->{refresh_required_params}}) {
         if ( exists $default{$param}
           or exists $oauth2_args->{$param}
           or exists $opt{$param}
